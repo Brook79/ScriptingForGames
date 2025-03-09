@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 421708700}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.008239059, z: -0, w: 0.9999661}
-  m_LocalPosition: {x: -0.36, y: 0.04, z: -9.81}
+  m_LocalPosition: {x: -1.89, y: 0.04, z: -9.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -294,7 +294,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.2}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 25, y: 25, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -363,7 +363,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!4 &817559944
 Transform:
   m_ObjectHideFlags: 0
@@ -493,8 +493,8 @@ Transform:
   m_GameObject: {fileID: 1058356231}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -1.2, z: 0}
+  m_LocalScale: {x: 12, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -604,6 +604,8 @@ GameObject:
   - component: {fileID: 1912562625}
   - component: {fileID: 1912562626}
   - component: {fileID: 1912562627}
+  - component: {fileID: 1912562628}
+  - component: {fileID: 1912562629}
   m_Layer: 0
   m_Name: CharacterArt
   m_TagString: Untagged
@@ -667,7 +669,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1512656188830553638, guid: 4de760c38ab41314bbdcfb6943023452, type: 3}
+  m_Sprite: {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -690,10 +692,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07439fb9bd6e1344d94249bb530e2bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key1: 275
-  key2: 276
+  key1: 100
+  key2: 97
   direction1: 0
   direction2: 180
+--- !u!114 &1912562628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912562624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f358c38285da534ba7e8103294edf18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1912562629
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912562624}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec604c07989524a459a01924dec3c7f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

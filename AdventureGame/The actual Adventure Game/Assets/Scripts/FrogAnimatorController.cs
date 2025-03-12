@@ -6,22 +6,22 @@ public class CharacterAnimationController : MonoBehaviour
 {
     private Animator animator;
 	
-	void Start()
+	private void Start()
 	{
 		animator = GetComponent<Animator>();
 	}
 	
-	void Update()
+	private void Update()
 	{
 		HandleAnimations();
 	}
 	
 	private void HandleAnimations()
 	{
-		//triggers the Double Jump animation
+		//triggers the Jump animation
 		if (Input.GetButtonDown("Jump"))
 		{
-			animator.SetTrigger("DJ");
+			animator.SetTrigger("Jump");
 		}
 		else
 		{ 
@@ -49,7 +49,7 @@ public class CharacterAnimationController : MonoBehaviour
 		}
 		
 		//triggers the Run Animation
-		if (Input.GetKeyDown(KeyCode.A))
+		if (Input.GetAxis("Horizontal") != 0)
 		{
 			animator.SetTrigger("Run");
 		}
@@ -59,9 +59,18 @@ public class CharacterAnimationController : MonoBehaviour
 		}
 		
 		//triggers the Run Animation
-		if (Input.GetKey(KeyCode.D))
+		if (Input.GetKeyDown(KeyCode.W))
 		{
-			animator.SetTrigger("Run");
+			animator.SetTrigger("WJ");
+		}
+		else
+		{
+			animator.SetTrigger("idle");
+		}
+		//triggers the Double Jump Animation
+		if (Input.GetKeyDown(KeyCode.T))
+		{
+			animator.SetTrigger("DJ");
 		}
 		else
 		{

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -8,15 +6,15 @@ public class SimpleCharacterController : MonoBehaviour
 	public float moveSpeed = 5f;
 	public float jumpForce = 8f;
 	public float gravity = -9.81f;
-	private CharacterController controller;
-	private Vector3 velocity;
-	private Transform thisTransform;
+	private CharacterController _controller;
+	private Vector3 _velocity;
+	private Transform _thisTransform;
 	
 	
 	private void Start()
 	{
-		controller = GetComponent<CharacterController>();
-		thisTransform = transform;
+		_controller = GetComponent<CharacterController>();
+		_thisTransform = transform;
 	}
 	
 	private void Update()
@@ -30,32 +28,32 @@ public class SimpleCharacterController : MonoBehaviour
 	{
 		var moveInput = Input.GetAxis("Horizontal");
 		var move = new Vector3(moveInput, 0f, 0f) * (moveSpeed * Time.deltaTime);
-		controller.Move(move);
+		_controller.Move(move);
 
 		if (Input.GetButtonDown("Jump"))
 		{
-			velocity.y = Mathf.Sqrt(jumpForce * -1/2 * gravity);
+			_velocity.y = Mathf.Sqrt(jumpForce * -1/2 * gravity);
 		}
 	}   
 
 	private void ApplyGravity()
 	{
-		if (!controller.isGrounded)
+		if (!_controller.isGrounded)
 		{
-			velocity.y += gravity * Time.deltaTime;
+			_velocity.y += gravity * Time.deltaTime;
 		}
 		else
 		{
-			velocity.y = 0f;
+			_velocity.y = 0f;
 		}
 
-		controller.Move(velocity * Time.deltaTime);
+		_controller.Move(_velocity * Time.deltaTime);
 	}
 	
 	private void KeepCharacterOnXAxis()
 	{
-		var currentPosition = thisTransform.position;
+		var currentPosition = _thisTransform.position;
 		currentPosition.z = 0f;
-		thisTransform.position = currentPosition;
+		_thisTransform.position = currentPosition;
 	}
 }

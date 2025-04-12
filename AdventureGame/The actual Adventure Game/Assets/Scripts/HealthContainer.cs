@@ -6,7 +6,7 @@ public class HealthContainer : MonoBehaviour
 {
     public SimpleFloatData healthValue;
 
-    public void adjustHealth(float amount)
+    public void adjustHealth(float amount) 
     {
         healthValue.UpdateValue(amount);
     }

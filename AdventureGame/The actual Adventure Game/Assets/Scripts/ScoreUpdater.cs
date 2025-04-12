@@ -9,6 +9,9 @@ public class SimpleTextMeshProBehavior : MonoBehaviour
 {
     private TextMeshProUGUI textObj;
     public SimpleIntData dataObj;
+	private float _shaketime;
+	private float _leftwards;
+	private float _rightwards;
 
     private void Start()
     {

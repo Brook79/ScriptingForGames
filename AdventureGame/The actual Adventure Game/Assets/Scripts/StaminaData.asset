@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd35ec6a8f103f48bac8482610e90eb, type: 3}
   m_Name: StaminaData
   m_EditorClassIdentifier: 
-  value: 1
+  value: -1.0066562

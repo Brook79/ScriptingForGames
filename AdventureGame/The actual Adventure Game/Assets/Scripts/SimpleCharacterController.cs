@@ -30,20 +30,7 @@ public class SimpleCharacterController : MonoBehaviour
 		KeepCharacterOnXAxis();
 		IdleStaminaIncrease();
 	}
-
-	private void OnControllerColliderHit(ControllerColliderHit hit)
-	{
-		if (hit.transform.tag == "Moving Box")
-		{
-			Rigidbody box = hit.collider.GetComponent<Rigidbody>();
-			if (box != null)
-			{
-				Vector3 pushDirection = new Vector3(hit.moveDirection.x, 0, 0);
-				box.velocity = pushDirection * _pushPower;
-			}
-		}
-		
-	}
+	
 	private void MoveCharacter()
 	{
 		var moveInput = Input.GetAxis("Horizontal");

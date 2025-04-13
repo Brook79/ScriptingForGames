@@ -11,16 +11,23 @@ public class IDMatch : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var otherID = other.GetComponent<IDBehavior>();
-
-        if (otherID.id == id)
+        if (otherID != null)
         {
-            matchEvent.Invoke();
-            Debug.Log("Matched ID: " + id);
+            if (otherID.id == id)
+            {
+                matchEvent.Invoke();
+                GetComponent<Collider>().enabled = false;
+                Debug.Log("Matched ID: " + id);
+            }
+            else
+            {
+                noMatchEvent.Invoke();
+                Debug.Log("No Match: " + id);
+            }
         }
         else
         {
             noMatchEvent.Invoke();
-            Debug.Log("No Match: " + id);
         }
     }
 }

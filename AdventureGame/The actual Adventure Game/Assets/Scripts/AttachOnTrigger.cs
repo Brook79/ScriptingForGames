@@ -13,4 +13,9 @@ public class AttachOnTrigger : MonoBehaviour
     {
         transform.parent = null;
     }
+
+    public void DestroyMe()
+    {
+        Destroy(gameObject);
+    }
 }

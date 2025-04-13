@@ -14,7 +14,6 @@ public class SimpleCharacterController : MonoBehaviour
 	private float _staminaCooldown;
 	public UnityEvent triggerEvent;
 	public UnityEvent triggerOtherEvent;
-	private float _pushPower = 2f;
 	
 	
 	private void Start()

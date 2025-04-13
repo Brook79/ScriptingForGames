@@ -6,6 +6,7 @@ public class AttachOnTrigger : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
+        transform.position += new Vector3(0.7f, 0, 0);
         transform.parent = other.transform;
     }
 

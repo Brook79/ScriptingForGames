@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Moving Box
+  - terrain
+  - Terrain
   layers:
   - Default
   - TransparentFX

@@ -7,6 +7,11 @@ public class SimpleFloatData : ScriptableObject
 {
     public float value;
 
+	private void Start()
+	{
+		SetValue(1);
+	}
+
     public void UpdateValue(float amount)
     {
         value += amount;

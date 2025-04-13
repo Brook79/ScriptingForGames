@@ -6,6 +6,11 @@ public class StaminaContainer : MonoBehaviour
 {
     public SimpleFloatData staminaValue;
 
+	private void Start()
+	{
+		staminaValue.SetValue(1);
+	}
+
     public void adjustStamina(float amount)
     {
         staminaValue.UpdateValue(amount);

@@ -17,12 +17,10 @@ public class IDMatch : MonoBehaviour
             {
                 matchEvent.Invoke();
                 GetComponent<Collider>().enabled = false;
-                Debug.Log("Matched ID: " + id);
             }
             else
             {
                 noMatchEvent.Invoke();
-                Debug.Log("No Match: " + id);
             }
         }
         else

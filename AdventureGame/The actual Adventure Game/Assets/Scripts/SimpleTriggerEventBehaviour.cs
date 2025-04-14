@@ -7,8 +7,9 @@ public class SimpleTriggerEventBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Triggers the event and tests with a debug message
-        triggerEvent.Invoke();
-        Debug.Log("Player interacted with the object!");
+        if (other.tag == "Player")
+        {
+            triggerEvent.Invoke();
+        }
     }
 }

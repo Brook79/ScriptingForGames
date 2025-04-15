@@ -6,10 +6,13 @@ public class AttachOnTrigger : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
-        transform.position += new Vector3(0.7f, -0.02f, 0);
-        transform.parent = other.transform;
+        if (other.tag == "Player")
+        {
+            Vector3 coolposition = new Vector3(other.transform.position.x + 0.5f, other.transform.position.y, other.transform.position.z);
+            transform.position = coolposition;
+            transform.parent = other.transform; 
+        }
     }
-
     public void OnTriggerExit(Collider other)
     {
         transform.parent = null;

@@ -16,8 +16,12 @@ public class IDMatch : MonoBehaviour
             if (otherID.id == id)
             {
                 matchEvent.Invoke();
-                GetComponent<Collider>().enabled = false;
-            }
+				BoxCollider[] boxColliders = GetComponents<BoxCollider>();
+				foreach (BoxCollider collider in boxColliders)
+				{
+					collider.enabled = false;
+				}
+			}
             else
             {
                 noMatchEvent.Invoke();

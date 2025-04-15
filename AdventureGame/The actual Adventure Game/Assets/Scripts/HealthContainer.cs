@@ -10,4 +10,8 @@ public class HealthContainer : MonoBehaviour
     {
         healthValue.UpdateValue(amount);
     }
+	public void setHealth(float amount)
+	{
+		healthValue.SetValue(amount);
+	}
 }

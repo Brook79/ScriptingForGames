@@ -14,20 +14,40 @@ public class SimpleCharacterController : MonoBehaviour
 	private float _staminaCooldown;
 	public UnityEvent triggerEvent;
 	public UnityEvent triggerOtherEvent;
+	public UnityEvent triggerActionEvent;
+	public bool canMove;
 	
 	
 	private void Start()
 	{
 		_controller = GetComponent<CharacterController>();
 		_thisTransform = transform;
+		canMove = true;
 	}
 	
 	private void Update()
 	{
-		MoveCharacter();
+		if (canMove)
+		{
+			MoveCharacter();
+		}
+		else
+		{
+			triggerActionEvent.Invoke();
+		}
 		ApplyGravity();
 		KeepCharacterOnXAxis();
 		IdleStaminaIncrease();
+	}
+
+	public void Nomove()
+	{
+		canMove = false;
+	}
+
+	public void Moveagain()
+	{
+		canMove = true;
 	}
 	
 	private void MoveCharacter()
@@ -76,7 +96,7 @@ public class SimpleCharacterController : MonoBehaviour
 		if (Time.time > _staminaCooldown)
 		{
 			triggerEvent.Invoke();
-			_staminaCooldown = Time.time + 1;
+			_staminaCooldown = Time.time + 0.5f;
 		}
 	}
 }

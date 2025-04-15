@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Globalization;
+using System.Threading;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class WinFont : MonoBehaviour
 {
     private TextMeshProUGUI textObj;
-    private float _justasec;
+    private float _justasec = 0;
     private int a = 1;
     private void start()
     {
@@ -18,16 +19,24 @@ public class WinFont : MonoBehaviour
 
     public void winner()
     {
-        textObj.fontSize = 75;
-        int a = 2;
-        _justasec = Time.time + 2f;
+        Time.timeScale = 0;
+    }
+
+    public void pineappel()
+    {
+        textObj = GetComponent<TextMeshProUGUI>();
+        textObj.fontSize = 45;
+        _justasec = Time.time + 3f;
     }
 
     private void Update()
     {
-        if (_justasec < Time.time && a == 2)
+        if (_justasec != 0 && textObj.fontSize != null)
         {
-            Time.timeScale = 0;
+            if (_justasec <= Time.time)
+            {
+                textObj.fontSize = 0;
+            }
         }
     }
 }

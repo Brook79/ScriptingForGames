@@ -14,4 +14,11 @@ public class HealthContainer : MonoBehaviour
 	{
 		healthValue.SetValue(amount);
 	}
+	private void Update()
+	{
+		if (healthValue.value <= 0)
+		{
+			Time.timeScale = 0;
+		}
+	}
 }

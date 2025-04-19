@@ -12,6 +12,7 @@ public class SimpleNavMeshAgent : MonoBehaviour
 	private NavMeshAgent agent;
 	public UnityEvent triggerRight;
 	public UnityEvent triggerLeft;
+	public GameObject thisObject;
 
     private void Start()
     {
@@ -22,6 +23,11 @@ public class SimpleNavMeshAgent : MonoBehaviour
 		{
 			agent.SetDestination(waypoints[0].position);
 		}
+	}
+	
+	public void Death()
+	{
+		Destroy(thisObject);
 	}
 	
 	private void Update()

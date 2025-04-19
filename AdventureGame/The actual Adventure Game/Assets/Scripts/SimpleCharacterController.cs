@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,6 +15,7 @@ public class SimpleCharacterController : MonoBehaviour
 	public UnityEvent triggerOtherEvent;
 	public UnityEvent triggerActionEvent;
 	public bool canMove;
+	private int _canDoubleJump;
 	
 	
 	private void Start()
@@ -23,6 +23,7 @@ public class SimpleCharacterController : MonoBehaviour
 		_controller = GetComponent<CharacterController>();
 		_thisTransform = transform;
 		canMove = true;
+		_canDoubleJump = 0;
 	}
 	
 	private void Update()
@@ -57,10 +58,11 @@ public class SimpleCharacterController : MonoBehaviour
 		var move = new Vector3(moveInput, 0f, 0f) * (moveSpeed * Time.deltaTime);
 		_controller.Move(move);
 
-		if (Input.GetButtonDown("Jump"))
+		if (Input.GetButtonDown("Jump") && _canDoubleJump < 2)
 		{
 			_velocity.y = Mathf.Sqrt(jumpForce * -1/2 * gravity);
 			isMoving = true;
+			_canDoubleJump++;
 		}
 
 		if (isMoving)
@@ -79,6 +81,7 @@ public class SimpleCharacterController : MonoBehaviour
 		else
 		{
 			_velocity.y = 0f;
+			_canDoubleJump = 0;
 		}
 
 		_controller.Move(_velocity * Time.deltaTime);

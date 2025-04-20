@@ -19,7 +19,7 @@ public class WinFont : MonoBehaviour
 
     public void winner()
     {
-        Time.timeScale = 0;
+        Application.Quit();
     }
 
     public void pineappel()

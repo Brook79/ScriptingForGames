@@ -16,14 +16,20 @@ public class SimpleCharacterController : MonoBehaviour
 	public UnityEvent triggerActionEvent;
 	public bool canMove;
 	private int _canDoubleJump;
-	
+	private bool _reachedCheckpoint;
+	public UnityEvent cameraReset;
+	public UnityEvent cameracheckpoint;
+
+	public float X;
+	public float Y;
 	
 	private void Start()
 	{
 		_controller = GetComponent<CharacterController>();
-		_thisTransform = transform;
+		_thisTransform = GetComponent<Transform>();
 		canMove = true;
 		_canDoubleJump = 0;
+		_reachedCheckpoint = false;
 	}
 	
 	private void Update()
@@ -39,11 +45,38 @@ public class SimpleCharacterController : MonoBehaviour
 		ApplyGravity();
 		KeepCharacterOnXAxis();
 		IdleStaminaIncrease();
+		X = _thisTransform.position.x;
+		Y = _thisTransform.position.y;
 	}
 
 	public void Nomove()
 	{
 		canMove = false;
+	}
+
+	public void Checkpoint()
+	{
+		_reachedCheckpoint = true;
+	}
+
+	public void DeathResult()
+	{
+		if (_reachedCheckpoint)
+		{
+			_controller.enabled = false;
+			_thisTransform.position = new Vector3(0, -2.34f, 0);
+			cameracheckpoint.Invoke();
+			Debug.Log("DeathResult.check");
+			_controller.enabled = true;
+		}
+		else
+		{
+			_controller.enabled = false;
+			_thisTransform.position = new Vector3(-101, -4, 0);
+			cameraReset.Invoke();
+			Debug.Log("DeathResult.nocheck");
+			_controller.enabled = true;
+		}
 	}
 
 	public void Moveagain()

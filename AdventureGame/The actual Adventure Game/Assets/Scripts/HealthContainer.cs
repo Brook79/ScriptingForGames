@@ -7,13 +7,16 @@ public class HealthContainer : MonoBehaviour
 {
     public SimpleFloatData healthValue;
 	public UnityEvent youDied;
-	private float _deathTime;
 
-	private void Start()
+	private void Update()
 	{
-		_deathTime = 0;
+		if (healthValue.value <= 0)
+		{
+			adjustHealth(1f);
+			youDied.Invoke();
+		}
 	}
-
+	
     public void adjustHealth(float amount) 
     {
         healthValue.UpdateValue(amount);
@@ -21,18 +24,5 @@ public class HealthContainer : MonoBehaviour
 	public void setHealth(float amount)
 	{
 		healthValue.SetValue(amount);
-	}
-	private void Update()
-	{
-		if (healthValue.value <= 0)
-		{
-			_deathTime = Time.time + 0.5f;
-			youDied.Invoke();
-		}
-
-		if (_deathTime <= Time.time && _deathTime !=0)
-		{
-			Time.timeScale = 0;
-		}
 	}
 }
